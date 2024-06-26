@@ -1,5 +1,18 @@
 import { postRouter } from "~/server/api/routers/post";
 import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
+import { tweetRouter } from "./routers/tweet";
+import { createTRPCRouter } from "./trpc";
+import { tweetRouter } from "./routers/tweet";
+
+export const appRouter = createTRPCRouter({
+  tweet: tweetRouter,
+});
+
+export type AppRouter = typeof appRouter;
+
+export const appRouter = t.router({
+  tweet: tweetRouter,
+});
 
 /**
  * This is the primary router for your server.
